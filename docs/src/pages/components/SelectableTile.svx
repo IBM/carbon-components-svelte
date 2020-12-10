@@ -1,36 +1,36 @@
 ---
-components: ["SelectableTile"]
+components: ["SelectableTile", "SelectableTileGroup"]
 ---
 
 <script>
-  import { SelectableTile } from "carbon-components-svelte";
+  import { SelectableTile, SelectableTileGroup } from "carbon-components-svelte";
   import Preview from "../../components/Preview.svelte";
 </script>
 
-### Multi-selectable tiles
+### Default
 
-<div role="group" aria-label="selectable tiles">
-  <SelectableTile selected>
-    Multi-select Tile
+<SelectableTileGroup legend="Select the options you require">
+  <SelectableTile title="Option 1" value="option1" selected>
+    Option 1
   </SelectableTile>
-  <SelectableTile selected>
-    Multi-select Tile
+  <SelectableTile title="Option 2" value="2" selected>
+    Option 2
   </SelectableTile>
-  <SelectableTile>
-    Multi-select Tile
+  <SelectableTile light title="Option 3" value="3">
+    Option 3 (light variant)
   </SelectableTile>
-</div>
+</SelectableTileGroup>
 
 ### Light variant
 
-<div role="group" aria-label="selectable tiles">
-  <SelectableTile light selected>
-    Multi-select Tile
+<SelectableTileGroup light legend="Select the options you require">
+  <SelectableTile title="Option 1" value="1" selected>
+    Option 1
   </SelectableTile>
-  <SelectableTile light selected>
-    Multi-select Tile
+  <SelectableTile title="Option 2" value="2" selected>
+    Option 2
   </SelectableTile>
-  <SelectableTile light>
-    Multi-select Tile
+  <SelectableTile title="Option 3" value="3">
+    Option 3
   </SelectableTile>
-</div>
+</SelectableTileGroup>

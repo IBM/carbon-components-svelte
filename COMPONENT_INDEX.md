@@ -1,6 +1,6 @@
 # Component Index
 
-> 155 components exported from carbon-components-svelte@0.25.1.
+> 156 components exported from carbon-components-svelte@0.25.1.
 
 ## Components
 
@@ -105,6 +105,7 @@
 - [`SelectItemGroup`](#selectitemgroup)
 - [`SelectSkeleton`](#selectskeleton)
 - [`SelectableTile`](#selectabletile)
+- [`SelectableTileGroup`](#selectabletilegroup)
 - [`SideNav`](#sidenav)
 - [`SideNavItems`](#sidenavitems)
 - [`SideNavLink`](#sidenavlink)
@@ -2905,8 +2906,8 @@ None.
 | Prop name       | Kind             | Reactive | Type                                      | Default value                                    | Description                                                   |
 | :-------------- | :--------------- | :------- | :---------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |
 | ref             | <code>let</code> | Yes      | <code>null &#124; HTMLInputElement</code> | <code>null</code>                                | Obtain a reference to the input HTML element                  |
+| light           | <code>let</code> | Yes      | <code>boolean</code>                      | <code>false</code>                               | Set to `true` to enable the light variant                     |
 | selected        | <code>let</code> | Yes      | <code>boolean</code>                      | <code>false</code>                               | Set to `true` to select the tile                              |
-| light           | <code>let</code> | No       | <code>boolean</code>                      | <code>false</code>                               | Set to `true` to enable the light variant                     |
 | title           | <code>let</code> | No       | <code>string</code>                       | <code>"title"</code>                             | Specify the title of the selectable tile                      |
 | value           | <code>let</code> | No       | <code>string</code>                       | <code>"value"</code>                             | Specify the value of the selectable tile                      |
 | tabindex        | <code>let</code> | No       | <code>string</code>                       | <code>"0"</code>                                 | Specify the tabindex                                          |
@@ -2924,11 +2925,35 @@ None.
 
 | Event name | Type      | Detail |
 | :--------- | :-------- | :----- |
+| change     | forwarded | --     |
+| keydown    | forwarded | --     |
 | click      | forwarded | --     |
 | mouseover  | forwarded | --     |
 | mouseenter | forwarded | --     |
 | mouseleave | forwarded | --     |
-| keydown    | forwarded | --     |
+
+## `SelectableTileGroup`
+
+### Props
+
+| Prop name      | Kind             | Reactive | Type                 | Default value      | Description                                                    |
+| :------------- | :--------------- | :------- | :------------------- | ------------------ | -------------------------------------------------------------- |
+| selectedValues | <code>let</code> | Yes      | <code>any[]</code>   | <code>[]</code>    | Specify the selected tile's                                    |
+| disabled       | <code>let</code> | No       | <code>boolean</code> | <code>false</code> | Set to `true` to disable the tile group                        |
+| legend         | <code>let</code> | No       | <code>string</code>  | <code>""</code>    | Specify the legend text                                        |
+| light          | <code>let</code> | No       | <code>boolean</code> | <code>false</code> | Set to `true` to enable the light variant throughout the group |
+
+### Slots
+
+| Slot name | Default | Props | Fallback |
+| :-------- | :------ | :---- | :------- |
+| --        | Yes     | --    | --       |
+
+### Events
+
+| Event name | Type       | Detail |
+| :--------- | :--------- | :----- |
+| select     | dispatched | --     |
 
 ## `SideNav`
 

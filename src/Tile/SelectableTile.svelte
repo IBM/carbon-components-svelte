@@ -29,47 +29,53 @@
   /** Obtain a reference to the input HTML element */
   export let ref = null;
 
-  import { createEventDispatcher } from "svelte";
+  import { getContext, onDestroy } from "svelte";
   import CheckmarkFilled16 from "carbon-icons-svelte/lib/CheckmarkFilled16";
 
-  const dispatch = createEventDispatcher();
+  const { update, selectedValues, _light } = getContext("SelectableTileGroup");
 
-  $: dispatch(selected ? "select" : "deselect", id);
+  $: update({ value, selected });
+
+  light = light || _light;
+
+  $: selected = $selectedValues.indexOf(value) > -1;
+
+  onDestroy(() => {
+    update({ value, selected: false });
+  });
 </script>
 
 <input
   bind:this="{ref}"
   type="checkbox"
-  tabindex="-1"
+  tabindex="{tabindex}"
   class:bx--tile-input="{true}"
   checked="{selected}"
   id="{id}"
   value="{value}"
   name="{name}"
   title="{title}"
+  on:change
+  on:change="{() => update({ value, selected: !selected })}"
+  on:keydown
+  on:keydown="{(e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      update({ value, selected: !selected });
+    }
+  }}"
 />
 <label
   for="{id}"
-  tabindex="{tabindex}"
   class:bx--tile="{true}"
   class:bx--tile--selectable="{true}"
   class:bx--tile--is-selected="{selected}"
   class:bx--tile--light="{light}"
   {...$$restProps}
   on:click
-  on:click|preventDefault="{() => {
-    selected = !selected;
-  }}"
   on:mouseover
   on:mouseenter
   on:mouseleave
-  on:keydown
-  on:keydown="{(e) => {
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault();
-      selected = !selected;
-    }
-  }}"
 >
   <span class:bx--tile__checkmark="{true}">
     <CheckmarkFilled16

@@ -74,6 +74,7 @@
     on:mouseover
     on:mouseenter
     on:mouseleave
+    {...$$restProps}
   >
     <thead>
       <tr>

@@ -7,6 +7,7 @@ components: ["TileGroup", "RadioTile"]
   import Preview from "../../components/Preview.svelte";
 </script>
 
+
 ### Default
 
 <TileGroup legend="Service pricing tiers">
@@ -24,13 +25,13 @@ components: ["TileGroup", "RadioTile"]
 ### Light variant
 
 <TileGroup legend="Service pricing tiers">
-  <RadioTile value="0" checked>
+  <RadioTile light value="0" checked>
     Lite plan
   </RadioTile>
-  <RadioTile value="1">
+  <RadioTile light value="1">
     Standard plan
   </RadioTile>
-  <RadioTile value="2">
+  <RadioTile light value="2">
     Plus plan
   </RadioTile>
 </TileGroup>
