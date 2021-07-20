@@ -36,7 +36,6 @@
     setContext,
     onMount,
     afterUpdate,
-    onDestroy,
   } from "svelte";
   import { writable } from "svelte/store";
 
@@ -76,10 +75,9 @@
   onMount(async () => {
     await tick();
     focus();
-  });
-
-  onDestroy(() => {
-    document.body.classList.remove("bx--body--with-modal-open");
+    return () => {
+      document.body.classList.remove("bx--body--with-modal-open");
+    };
   });
 
   afterUpdate(() => {
