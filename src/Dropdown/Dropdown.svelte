@@ -179,7 +179,9 @@
       {disabled &&
       'bx--dropdown--disabled'}
       {light && 'bx--dropdown--light'}"
-    on:click="{({ target }) => {
+    on:click="{(e) => {
+      e.stopImmediatePropagation();
+      const { target } = e;
       open = ref.contains(target) ? !open : false;
     }}"
     disabled="{disabled}"
