@@ -42,6 +42,8 @@ yarn add -D carbon-components-svelte
 
 ```sh
 npm i -D carbon-components-svelte
+# OR
+pnpm i -D carbon-components-svelte
 ```
 
 ## Usage
